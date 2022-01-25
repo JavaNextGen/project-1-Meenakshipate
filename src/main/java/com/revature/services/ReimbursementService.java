@@ -3,6 +3,7 @@ package com.revature.services;
 import com.revature.models.Reimbursement;
 import com.revature.models.Status;
 import com.revature.models.User;
+import com.revature.repositories.ReimbursementDAO;
 
 import java.util.Collections;
 import java.util.List;
@@ -25,6 +26,7 @@ import java.util.List;
  * </ul>
  */
 public class ReimbursementService {
+	ReimbursementDAO eDAO = new ReimbursementDAO();
 
     /**
      * <ul>
@@ -48,6 +50,7 @@ public class ReimbursementService {
      * Should retrieve all reimbursements with the correct status.
      */
     public List<Reimbursement> getReimbursementsByStatus(Status status) {
-        return Collections.emptyList();
+    	return eDAO.getByStatus(status);
+       // return Collections.emptyList();
     }
 }

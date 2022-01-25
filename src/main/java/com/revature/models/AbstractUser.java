@@ -25,17 +25,43 @@ public class AbstractUser {
     private String username;
     private String password;
     private Role role;
+    private String firstname;
+    private String lastname;
+    private String email;
+    private int role_id;
 
     public AbstractUser() {
         super();
     }
-
-    public AbstractUser(int id, String username, String password, Role role) {
+   /* public AbstractUser(String username, String password,String email,int role_id) {
+        super();
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.role_id = role_id;
+    }*/
+    public AbstractUser( String username, String password,String firstname,String lastname, String email,int role_id ) {
+        super();
+        
+        this.username = username;
+        this.password = password;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.role_id = role_id;
+    }
+    //meena
+    public AbstractUser(int id, String username, String password,String firstname,String lastname,String email, int role_id) {
         super();
         this.id = id;
         this.username = username;
         this.password = password;
-        this.role = role;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.role_id = role_id;
+        
+        
     }
 
     public int getId() {
@@ -61,6 +87,20 @@ public class AbstractUser {
     public void setPassword(String password) {
         this.password = password;
     }
+    public String getfirstname() {
+        return firstname;
+    }
+
+    public void setfirstname(String firstname) {
+        this.firstname = firstname;
+    }
+    public String getlastname() {
+        return lastname;
+    }
+
+    public void setlastname(String lastname) {
+        this.lastname = lastname;
+    }
 
     public Role getRole() {
         return role;
@@ -69,6 +109,22 @@ public class AbstractUser {
     public void setRole(Role role) {
         this.role = role;
     }
+    public String getemail() {
+        return email;
+    }
+
+    public void setemail(String email) {
+        this.email = email;
+    }
+    public int getrole_Id() {
+        return role_id;
+    }
+
+    public void setrole_Id(int role_id) {
+        this.role_id = role_id;
+    }
+    
+    
 
     @Override
     public boolean equals(Object o) {
@@ -87,9 +143,9 @@ public class AbstractUser {
     public String toString() {
         return "AbstractUser{" +
                 "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", role=" + role +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email=" + email +
                 '}';
     }
 }

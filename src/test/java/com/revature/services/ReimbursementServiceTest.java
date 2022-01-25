@@ -37,8 +37,8 @@ public class ReimbursementServiceTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		GENERIC_EMPLOYEE_1 = new User(1, "genericEmployee1", "genericPassword", Role.EMPLOYEE);
-		GENERIC_FINANCE_MANAGER_1 = new User(1, "genericManager1", "genericPassword", Role.FINANCE_MANAGER);
+		GENERIC_EMPLOYEE_1 = new User();
+		GENERIC_FINANCE_MANAGER_1 = new User();
 		
 		REIMBURSEMENT_TO_PROCESS = new Reimbursement(2, Status.PENDING, GENERIC_EMPLOYEE_1, null, 150.00);
 		
@@ -51,7 +51,7 @@ public class ReimbursementServiceTest {
 	
 	@Test
 	public void testProcessPassesWhenUserIsFinanceManagerAndReimbursementExistsAndUpdateSuccessful() {
-		when(reimbursementDAO.getById(anyInt())).thenReturn(Optional.of(GENERIC_REIMBURSEMENT_1));
+		when(reimbursementDAO.getById(anyInt())).thenReturn(List.of(GENERIC_REIMBURSEMENT_1));
 		when(reimbursementDAO.update(any())).thenReturn(GENERIC_REIMBURSEMENT_2);
 		
 		assertEquals(GENERIC_REIMBURSEMENT_2, reimbursementService.process(REIMBURSEMENT_TO_PROCESS, Status.APPROVED, GENERIC_FINANCE_MANAGER_1));
