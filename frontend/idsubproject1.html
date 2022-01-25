@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+    <html lang="en">
+     <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    
+                    
+                    
+                        <!-- This is a link to a bootstrap stylesheet, which will basically set a premade style for your page -->
+     <link
+     href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+     rel="stylesheet"
+     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+     crossorigin="anonymous"
+                            
+                        />
+                        <!--bootstrap classes cheatsheet-->
+                        <!--https://www.w3schools.com/bootstrap/bootstrap_ref_css_buttons.asp-->
+                
+                    
+    </head>
+    <body>
+                    
+                    <div>
+                        <h2>Insert Reimbursement Details!</h2>     
+                    </div>
+                
+                    <div class ="row">
+                   <!-----      <label for ="user">empolyee</label>
+                         <input id = "user" placeholder="re_id" size="20" class="col-sm-2" value="0"/><br/>-->
+                            <label for="reimb_amout">Amout.:</label>
+                            <input id="reimb_amout" placeholder="reimb" size="20" class="col-sm-2" value=" "/><br />
+                            <label for="reimb_description">Description.:</label>
+                            <input id="reimb_description" placeholder="reimb" size="20" class="col-sm-2" value=" "/><br />
+                            <label for="reimb_author">User Author.:</label>
+                            <input id="reimb_author" placeholder="reimb" size="20" class="col-sm-2" value=" "/><br />
+                          <!----  <label for="reimb_status_id">Status id:</label>
+                            <input id="reimb_status_id" placeholder="reimb" size="20" class="col-sm-2" value=" "/><br />-->
+                            <label for="reimb_type_id">type id:</label>
+                            <input id="reimb_type_id" placeholder="reimb" size="20" class="col-sm-2" value=" "/><br />
+                    </div>
+                
+                <!-- We want to display(table) all of the employee information when it comes back from the server -->
+                <!--<div id="table-row" class="row">
+                    <table id="EmployeeTable" class="table table-hover table-bordered table-dark"style="width:1400px; border: 15px solid black">
+                        <thead>
+                            <tr>
+                                
+                                <th>ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Employee Email</th>
+                                <th>Role Id</th>
+                                
+                                
+                
+                            </tr>
+                        </thead>
+                        <tbody id="idemployeeBody">
+                            We'll leave this blank: it will be filled by our JS when data comes in
+                        </tbody>
+                    </table>
+                </div>-->
+<br />
+<br />
+
+
+<button id="insertEmployeesButton" class="btn btn-primary">Submit</button>
+
+<p>  </p>
+<input type="button" value="Go back" class="btn btn-primary" onclick="history.back()">
+<script src="idsubproject1.js"></script>
+</body>
+</html>
+                
+               

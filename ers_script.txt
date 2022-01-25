@@ -1,0 +1,86 @@
+----------------------------------------------------------------------------------------------------------------------------------------------
+CREATE TABLE ers_user_roles(
+ers_user_role_id serial PRIMARY KEY, ---this IS PRIMARY KEY OF roles
+user_role TEXT 
+);
+
+INSERT INTO ers_user_roles(ers_user_role_id,user_role)
+VALUES (1,'EMPLOYEE'),
+       (2,'FINANCE_MANAGER');
+     --  (11147,'EMPLOYEE');
+DELETE FROM ers_user_roles WHERE ers_user_role_id = 11147;
+CREATE TABLE ers_reimbursement_type(
+reimb_type_id serial PRIMARY KEY,
+reimb_type  TEXT 
+);
+INSERT INTO ers_reimbursement_type(reimb_type_id,reimb_type)
+VALUES (1145,'hotel bill'),
+       (1146,'Restaurants bill'),
+       (1147,'Gas bill');
+
+CREATE TABLE ers_reimbursement_status(
+reimb_status_id serial PRIMARY KEY,
+reimb_status TEXT 
+);
+INSERT INTO ers_reimbursement_status(reimb_status_id,reimb_status)
+VALUES (1,'APPROVED'),
+       (0,'PENDING'),
+       (2,'DENIED');
+SELECT * FROM ers_reimbursement_status;
+DROP TABLE ers_reimbursement_status;
+
+CREATE TABLE ers_users(
+ers_users_id serial PRIMARY KEY ,
+ers_username TEXT UNIQUE ,
+ers_password TEXT,
+user_first_name TEXT,
+user_last_name TEXT,
+user_email TEXT UNIQUE,
+user_role_id int REFERENCES ers_user_roles(ers_user_role_id)
+);
+
+SELECT * FROM ers_users;
+
+SELECT * FROM ers_reimbursement;
+
+
+DELETE FROM ers_users WHERE ers_users_id = 18;
+INSERT INTO ers_users ( ers_username, ers_password, user_first_name, user_last_name, user_email, user_role_id)
+VALUES ('Meena', 'meena', 'Meenakshi','Patel','meena.patel@outlook.com',1),
+       ('Mani', 'mani', 'Manisha','Patel','mani.patel@outlook.com',2),
+       ('Minu', 'manash','Mandakini','Patel','mandakini.patel@outlook.com',1 );
+      
+--SELECT ers_users.ers_username ,ers_user_roles.user_role FROM ers_users,ers_user_roles  
+--WHERE ers_users.user_role_id = ers_user_roles.ers_user_role_id ;    
+
+CREATE TABLE ers_reimbursement(
+reimb_id serial PRIMARY KEY,
+reimb_amout int,
+reimb_submitted timestamp,
+reimb_resolved  timestamp,
+reimb_description TEXT,
+reimb_receipt int,
+reimb_author int REFERENCES ers_users(ers_users_id),
+reimb_resolver int REFERENCES ers_users(ers_users_id),
+reimb_status_id int REFERENCES ers_reimbursement_status(reimb_status_id),
+reimb_type_id int REFERENCES ers_reimbursement_type(reimb_type_id)
+
+);
+INSERT INTO ers_reimbursement(reimb_amout,reimb_submitted,reimb_resolved,reimb_description,reimb_receipt,reimb_author,reimb_resolver,reimb_status_id,reimb_type_id)
+VALUES (200,now(),now(),'Hotel',15,5,5,1,1145),
+       (400,now(),now(),'Restaurants',16,7,7,0,1146),
+       (600,now(),now(),'Gas',16,8,8,2,1145);
+
+ COMMIT;     
+      
+DROP TABLE ers_reimbursement ;
+
+DROP TABLE ers_users;
+SELECT * FROM ers_reimbursement;
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------
